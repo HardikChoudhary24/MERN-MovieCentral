@@ -1,0 +1,313 @@
+@import "../../../mixin.scss";
+
+.detailBanner {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  @include lg {
+    height: 800px;
+  }
+  .layer {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 14, 14, 0) 0%,
+      rgb(0, 0, 0) 79.17%
+    );
+    border: none;
+  }
+  .bannerImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.55;
+    overflow: hidden;
+    .lazy-load-image-background {
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  .detailsContainer {
+    margin: 80px 0;
+    padding: 0 20px;
+    // z-index: 1;
+    position: relative;
+    color: white;
+    @include flexCenter(column);
+    align-items: start;
+    @include md {
+      @include flexCenter(row);
+      justify-content: start;
+      align-items: start;
+    }
+
+    .photo {
+      width: 100%;
+      @include flexCenter(row);
+      @include md{
+        width: auto;
+      }
+      .itemPhoto {
+        width: 300px;
+        height: 450px;
+        @include md {
+          width: 370px;
+          height: 550px;
+        }
+        @include lg {
+          width: 400px;
+          height: 585px;
+        }
+        overflow: hidden;
+        border-radius: 25px;
+        .lazy-load-image-background {
+          width: 100%;
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+    }
+    .infoBox {
+      position: relative;
+      @include flexCenter(column);
+      align-items: start;
+      @include md {
+        margin-left: 50px;
+      }
+      @include lg {
+        margin-left: 70px;
+      }
+      .title {
+        color: white;
+        font-size: 1.35rem;
+        margin-top: 15px;
+        font-weight: 700;
+        @include md {
+          font-size: 1.5rem;
+        }
+        @include lg {
+          font-size: 1.7rem;
+        }
+      }
+      .tagline {
+        color: rgb(182, 178, 178);
+        font-size: 0.9rem;
+        margin-top: 10px;
+        font-weight: 500;
+        @include md {
+          font-size: 1.1rem;
+        }
+        @include lg {
+          font-size: 1.25rem;
+        }
+      }
+      .box {
+        @include flexCenter(row);
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+
+        .rating {
+          @include flexCenter(row);
+          span {
+            margin-top: 2px;
+            margin-left: 10px;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+          }
+        }
+        .playTrailer {
+          outline: none;
+          border: none;
+          @include flexCenter(row);
+          justify-content: space-between;
+          background-color: rgb(10, 10, 10);
+          border: 1px solid rgb(27, 26, 26);
+          padding: 10px;
+          margin: 0px 0 0 20px;
+          width: 100px;
+          border-radius: 5px;
+          span {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: white;
+          }
+          cursor: pointer;
+        }
+        .playTrailer:hover {
+          background-color: rgb(21, 20, 20);
+          border: 1px solid rgb(27, 26, 26);
+        }
+      }
+      .overview {
+        @include flexCenter(column);
+        align-items: start;
+        margin-top: 30px;
+        p {
+          font-size: 1.3rem;
+          font-weight: 700;
+          @include md {
+            font-size: 1.5rem;
+          }
+          @include lg {
+            font-size: 1.65rem;
+          }
+        }
+        span {
+          text-align: justify;
+          font-weight: 400;
+          font-size: 1.1rem;
+          margin-top: 15px;
+          line-height: 1.5;
+          @include md {
+            font-size: 1.25rem;
+          }
+          @include lg {
+            font-size: 1.35rem;
+          }
+        }
+      }
+      .infoContainer {
+        @include flexCenter(row);
+        margin-top: 20px;
+        width: 100%;
+        justify-content: space-between;
+
+        div {
+          @include flexCenter(column);
+          align-items: start;
+
+          p {
+            font-weight: 700;
+            font-size: 1rem;
+            @include md {
+              font-size: 1.17rem;
+            }
+            @include lg {
+              font-size: 1.25rem;
+            }
+          }
+          span {
+            font-weight: 400;
+            font-size: 1rem;
+            margin-top: 5px;
+            color: rgb(182, 178, 178);
+            @include md {
+              font-size: 1.17rem;
+            }
+            @include lg {
+              font-size: 1.25rem;
+            }
+          }
+        }
+        .flexRow {
+          @include flexCenter(row);
+          justify-content: start;
+          //   span {
+          //     font-weight: 400;
+          //     font-size: 0.9rem;
+          //     margin-left: 5px;
+          //     margin-top: 0;
+          //     color: rgb(182, 178, 178);
+          //   }
+          p {
+            font-weight: 700;
+            font-size: 1rem;
+            @include md {
+              font-size: 1.17rem;
+            }
+            @include lg {
+              font-size: 1.25rem;
+            }
+          }
+          span {
+            font-weight: 400;
+            font-size: 1rem;
+            margin-top: 0;
+            margin-left: 5px;
+            color: rgb(182, 178, 178);
+            @include md {
+              font-size: 1.17rem;
+            }
+            @include lg {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+    hr {
+      width: 100%;
+      margin-top: 10px;
+      border: 0;
+      height: 1px;
+      background: #333;
+      @include md {
+        margin-top: 15px;
+      }
+      @include lg {
+        margin-top: 20px;
+      }
+    }
+    .info {
+      @include flexCenter(row);
+      justify-content: start;
+      width: 100%;
+      margin-top: 15px;
+      flex-wrap: wrap;
+      row-gap: 10px;
+      @include md {
+        margin-top: 20px;
+      }
+      @include lg {
+        margin-top: 25px;
+      }
+      p {
+        font-weight: 700;
+        font-size: 1rem;
+        @include md {
+          font-size: 1.18rem;
+        }
+        @include lg {
+          font-size: 1.27rem;
+        }
+      }
+      span {
+        font-weight: 400;
+        font-size: 1rem;
+        margin-left: 5px;
+        color: rgb(182, 178, 178);
+        @include md {
+          font-size: 1.18rem;
+        }
+        @include lg {
+          font-size: 1.27rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../mixin.scss";
+.switchBtns {
+      @include flexCenter(row);
+      background-color: white;
+      height: 28px;
+      border-radius: 20px;
+      padding: 10px 1px;
+      @include sm {
+        height: 38px;
+        padding: 20px 2px;
+      }
+
+      .switch {
+        font-family: "Bricolage Grotesque", sans-serif;
+        @include flexCenter(row);
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        width: 70px;
+        padding: 5px 0;
+        font-weight: 400;
+        background-color: white;
+        @include sm {
+          width: 100px;
+          padding: 10px 0;
+          font-weight: 700;
+        }
+      }
+      .switch:hover {
+        cursor: pointer;
+        background-color: rgba(245, 241, 241, 0.842);
+      }
+      .active {
+        // background-color: #5b131a;
+        // background-image: linear-gradient(315deg, #5b131a 0%, #a71d31 74%);
+        background-color: #bf171d;
+        color: white;
+        transition: all 0.2s ease-in-out;
+      }
+      .active:hover {
+        background-color: #bf171d;
+      }
+    }

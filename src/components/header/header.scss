@@ -1,0 +1,179 @@
+@import "../../mixin.scss";
+.headerContainer {
+  @include flexCenter(row);
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  // background-color: rgba(3, 3, 3, 0.19);
+  background-color: rgba(3, 3, 3, 0.107);
+  position: fixed;
+  padding: 15px 20px;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  .siteLogo {
+    cursor: pointer;
+    h1 {
+      font-family: "Fira Sans", sans-serif;
+      color: white;
+      span {
+        color: #e01e25;
+      }
+    }
+  }
+
+  .navItems {
+    padding: 0 10px;
+    @include flexCenter(row);
+
+    .menuBtn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+    .menuBtn:hover {
+      cursor: pointer;
+    }
+
+    .searchBtn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      margin-right: 30px;
+      display: none;
+      color: white;
+    }
+    .searchBtn:hover {
+      cursor: pointer;
+      color: #e01e25;
+    }
+
+    .moviesBtn,
+    .tvBtn {
+      @include flexCenter(row);
+      outline: none;
+      border: none;
+      background-color: transparent;
+      color: white;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-right: 25px;
+      display: none;
+      p {
+        height: 100%;
+      }
+    }
+    .moviesBtn:hover,.tvBtn:hover{
+        color:#e01e25 ;
+        font-weight: 900;
+        cursor: pointer;
+        
+    }
+    .searchBar {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include sm {
+        flex-direction: row;
+      }
+
+      .searchInput {
+        font-family: "Bricolage Grotesque", sans-serif;
+        height: 25px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        padding: 10px;
+        outline: none;
+        border: none;
+        font-weight: 500;
+        margin-right: 5px;
+      }
+    }
+    @include sm {
+      .searchBtn {
+        display: block;
+      }
+    }
+    @include md {
+      .searchBtn {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+      .moviesBtn,
+      .tvBtn {
+        display: block;
+      }
+      .menuBtn {
+        display: none;
+      }
+    }
+  }
+}
+.menuContainer {
+  width: 100%;
+  height: 100%;
+  @include flexCenter(column);
+  justify-content: start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: black;
+  transition: all 1s ease-in;
+  animation: right-to-left 0.3s ease-in forwards;
+
+  .menuContainerHeader {
+    @include flexCenter(row);
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+
+    .siteLogo {
+      h1 {
+        font-family: "Fira Sans", sans-serif;
+        color: white;
+        span {
+          color: #e01e25;
+        }
+      }
+    }
+
+    .backBtn {
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+    .backBtn:hover {
+      cursor: pointer;
+    }
+  }
+  .menuItem {
+    width: 100%;
+    height: 60px;
+    padding: 10px 20px;
+    @include flexCenter(row);
+    justify-content: start;
+    p {
+      color: white;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 600;
+    }
+    .searchIcon {
+      margin-right: 5px;
+    }
+    border: 1px solid rgb(19, 19, 19);
+  }
+  .menuItem:hover {
+    background-color: rgb(16, 12, 12);
+  }
+
+  @keyframes right-to-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}

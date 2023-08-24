@@ -1,0 +1,32 @@
+@import "../../mixin.scss";
+
+.homePage {
+  @include flexCenter(column);
+}
+.trendingList {
+  @include flexCenter(column);
+  width: 100%;
+  margin: 150px 0;
+  .trendingHead {
+    @include flexCenter(row);
+    justify-content: space-between;
+    padding: 0 5px;
+    width: 100%;
+
+    span {
+      font-family: "Bricolage Grotesque", sans-serif;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      @include sm {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+.upcomingList {
+  margin-top: 20px;
+}
+.topRatedList {
+  margin-top: 20px;
+}

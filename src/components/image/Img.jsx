@@ -1,0 +1,16 @@
+import React from 'react'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import alternate from "../../assets/no-poster.png"
+
+const Img = ({className , src}) => {
+  return (
+    <LazyLoadImage
+      className={className || ""}
+      src={src}
+      effect="blur"
+    />
+  );
+}
+
+export default Img
