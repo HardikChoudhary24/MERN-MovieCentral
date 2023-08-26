@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowRoundBack, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IconContext } from "react-icons/lib";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [inputField, setInputField] = useState("");
@@ -35,11 +35,13 @@ const Header = () => {
   return (
     <>
       <header className="headerContainer">
-        <div className="siteLogo">
-          <h1>
-            <span>MOVIE</span> CENTRAL
-          </h1>
-        </div>
+        <Link to="/" style={{textDecoration:"none"}}>
+          <div className="siteLogo">
+            <h1>
+              <span>MOVIE</span> CENTRAL
+            </h1>
+          </div>
+        </Link>
         <div className="navItems">
           <button
             className="moviesBtn"

@@ -45,6 +45,52 @@ const DetailBanner = ({ video, crew }) => {
 
     return result;
   }
+
+  console.log(video);
+
+  const skItem = () => {
+    return (
+      <>
+        <div className="photo">
+          <div className="itemPhoto skeleton"></div>
+        </div>
+        <div className="infoCont infoBox">
+          <p className="title skeleton"></p>
+          <p className="tagline skeleton"></p>
+          <p className="genres skeleton"></p>
+          <div className="box">
+            <div className="rating skeleton"></div>
+            <button className="playTrailer skeleton"></button>
+          </div>
+          <div className="overview overviewSkeleton">
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+          </div>
+          <div className="infoContainer infoContainerSkeleton">
+            <div className="flexRow">
+              <span className="skeleton"></span>
+              <span className="skeleton"></span>
+              <span className="skeleton"></span>
+            </div>
+          </div>
+          <hr />
+          <div className="info">
+            <p className="skeleton"></p>
+          </div>
+          <hr />
+          <div className="info">
+            <p className="skeleton"></p>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
       <div className="detailBanner">
@@ -56,130 +102,139 @@ const DetailBanner = ({ video, crew }) => {
         <div className="layer"></div>
         <ContentWrapper>
           <div className="detailsContainer">
-            <div className="photo">
-              <div className="itemPhoto">
-                <Img
-                  src={
-                    data?.poster_path
-                      ? url.poster + data?.poster_path
-                      : alternate
-                  }
-                />
-              </div>
-            </div>
-            <div className="infoBox">
-              <p className="title">
-                {data?.original_title || data?.title || data?.name}
-              </p>
-              <p className="tagline">{data?.tagline}</p>
-              <p className="genres"></p>
-              <div className="box">
-                <div className="rating">
-                  <IconContext.Provider
-                    value={{
-                      color: "yellow",
-                      className: "global-class-name ratingStar",
-                      size: "18px",
-                    }}
-                  >
-                    <BsStarFill />
-                    <span>{data?.vote_average.toFixed(1)}</span>
-                  </IconContext.Provider>
+            {!isLoading ? (
+              <>
+                <div className="photo">
+                  <div className="itemPhoto">
+                    <Img
+                      src={
+                        data?.poster_path
+                          ? url.poster + data?.poster_path
+                          : alternate
+                      }
+                    />
+                  </div>
                 </div>
-                <button
-                  className="playTrailer"
-                  onClick={() => {
-                    setShow(true);
-                    setVideoId(video?.key);
-                  }}
-                >
-                  <IconContext.Provider
-                    value={{
-                      color: "white",
-                      className: "global-class-name ratingStar",
-                      size: "18px",
-                    }}
-                  >
-                    <BsPlayFill />
-                    <span>Trailer</span>
-                  </IconContext.Provider>
-                </button>
-              </div>
-              <div className="overview">
-                <p>Overview</p>
-                <span>{data?.overview}</span>
-              </div>
-              <div className="infoContainer">
-                <div
-                  className={
-                    data?.release_date && data?.runtime ? "" : "flexRow"
-                  }
-                >
-                  <p>Status:</p>
-                  <span>{data?.status}</span>
-                </div>
-                {data?.release_date && (
-                  <div>
-                    <p>Release Date:</p>
-                    <span>
-                      {data?.release_date &&
-                        dayjs(data?.release_date).format("MMM D, YYYY")}
-                    </span>
+                <div className="infoBox">
+                  <p className="title">
+                    {data?.original_title || data?.title || data?.name}
+                  </p>
+                  <p className="tagline">{data?.tagline}</p>
+                  <p className="genres"></p>
+                  <div className="box">
+                    <div className="rating">
+                      <IconContext.Provider
+                        value={{
+                          color: "yellow",
+                          className: "global-class-name ratingStar",
+                          size: "18px",
+                        }}
+                      >
+                        <BsStarFill />
+                        <span>{data?.vote_average.toFixed(1)}</span>
+                      </IconContext.Provider>
+                    </div>
+                    {video && (
+                      <button
+                        className="playTrailer"
+                        onClick={() => {
+                          setShow(true);
+                          setVideoId(video?.key);
+                        }}
+                      >
+                        <IconContext.Provider
+                          value={{
+                            color: "white",
+                            className: "global-class-name ratingStar",
+                            size: "18px",
+                          }}
+                        >
+                          <BsPlayFill />
+                          <span>Trailer</span>
+                        </IconContext.Provider>
+                      </button>
+                    )}
                   </div>
-                )}
-                {data?.runtime && (
-                  <div>
-                    <p>Runtime:</p>
-                    <span>{formatTime(data?.runtime)}</span>
+                  <div className="overview">
+                    <p>Overview</p>
+                    <span>{data?.overview}</span>
                   </div>
-                )}
-              </div>
-              <hr />
-              {director?.length > 0 && (
-                <>
-                  <div className="info">
-                    <p>Director:</p>
-                    <span>{director[0].name}</span>
-                  </div>
-                  <hr />
-                </>
-              )}
-              {writers?.length > 0 && (
-                <>
-                  <div className="info">
-                    <p>Writer:</p>
-                    {writers.length === 1 ? (
-                      <span>{writers[0]?.name}</span>
-                    ) : (
-                      writers.map((w, index) => {
-                        const name = w?.name;
-                        const comma = index === writers.length - 1 ? "" : ",";
-                        return <span>{`${name}${comma}`}</span>;
-                      })
+                  <div className="infoContainer">
+                    <div
+                      className={
+                        data?.release_date && data?.runtime ? "" : "flexRow"
+                      }
+                    >
+                      <p>Status:</p>
+                      <span>{data?.status}</span>
+                    </div>
+                    {data?.release_date && (
+                      <div>
+                        <p>Release Date:</p>
+                        <span>
+                          {data?.release_date &&
+                            dayjs(data?.release_date).format("MMM D, YYYY")}
+                        </span>
+                      </div>
+                    )}
+                    {data?.runtime && (
+                      <div>
+                        <p>Runtime:</p>
+                        <span>{formatTime(data?.runtime)}</span>
+                      </div>
                     )}
                   </div>
                   <hr />
-                </>
-              )}
-              {data?.created_by?.length > 0 && (
-                <>
-                  <div className="info">
-                    <p>Creator:</p>
-                    {writers?.length === 1 ? (
-                      <span>{data?.created_by?.[0]?.name}</span>
-                    ) : (
-                      data?.created_by?.map((w, index) => {
-                        const name = w?.name;
-                        const comma =
-                          index === data?.created_by?.length - 1 ? "" : ",";
-                        return <span>{`${name}${comma}`}</span>;
-                      })
-                    )}
-                  </div>
-                  <hr />
-                </>
-              )}
-            </div>
+                  {director?.length > 0 && (
+                    <>
+                      <div className="info">
+                        <p>Director:</p>
+                        <span>{director[0].name}</span>
+                      </div>
+                      <hr />
+                    </>
+                  )}
+                  {writers?.length > 0 && (
+                    <>
+                      <div className="info">
+                        <p>Writer:</p>
+                        {writers.length === 1 ? (
+                          <span>{writers[0]?.name}</span>
+                        ) : (
+                          writers.map((w, index) => {
+                            const name = w?.name;
+                            const comma =
+                              index === writers.length - 1 ? "" : ",";
+                            return <span>{`${name}${comma}`}</span>;
+                          })
+                        )}
+                      </div>
+                      <hr />
+                    </>
+                  )}
+                  {data?.created_by?.length > 0 && (
+                    <>
+                      <div className="info">
+                        <p>Creator:</p>
+                        {writers?.length === 1 ? (
+                          <span>{data?.created_by?.[0]?.name}</span>
+                        ) : (
+                          data?.created_by?.map((w, index) => {
+                            const name = w?.name;
+                            const comma =
+                              index === data?.created_by?.length - 1 ? "" : ",";
+                            return <span>{`${name}${comma}`}</span>;
+                          })
+                        )}
+                      </div>
+                      <hr />
+                    </>
+                  )}
+                </div>
+              </>
+            ) : (
+              skItem()
+            )}
             {/* <p className="directorName">{data?.}</p> */}
           </div>
         </ContentWrapper>

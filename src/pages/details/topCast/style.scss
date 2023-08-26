@@ -1,4 +1,25 @@
-@import "../../mixin.scss";
+@import "../../../mixin.scss";
+.topCastList {
+  @include flexCenter(column);
+  width: 100%;
+  margin: 20px 0;
+  .trendingHead {
+    @include flexCenter(row);
+    justify-content: space-between;
+    padding: 0 5px;
+    width: 100%;
+
+    span {
+      font-family: "Bricolage Grotesque", sans-serif;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      @include sm {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
 .container {
   padding: 0 20px;
   position: relative;
@@ -34,7 +55,7 @@
   margin-right: -20px;
   margin-left: -20px;
   margin-top: 15px;
-  .scroalableList {
+  .castscroalableList {
     @include flexCenter(row);
     justify-content: start;
     align-items: start;
@@ -74,14 +95,14 @@
         }
       }
     }
-    .itemContainer {
+    .castContainer {
       // width: 282.5px;
       // width: 162.5px;
       padding: 5px;
       @include flexCenter(column);
       align-items: start;
       flex-shrink: 0;
-      .itemPhoto {
+      .castPhoto {
         position: relative;
         width: 100%;
         aspect-ratio: 1 / 1.5;
@@ -108,51 +129,30 @@
         }
       }
     }
-    .itemContainer:hover {
-      cursor: pointer;
-      background-color: rgb(10, 10, 10);
-      border-radius: 15px;
-      border: 1px solid rgb(27, 26, 26);
-    }
-    .rating {
-      @include flexCenter(row);
-
-      margin-top: 10px;
-      span {
-        margin-top: 2px;
-        margin-left: 10px;
-        color: white;
-        font-weight: 500;
-        font-size: 1.1rem;
-      }
-    }
-    .itemTitle {
+    .itemName {
       // margin: 25px 0 0 0;
       margin: 15px 0 0 0;
       font-weight: 600;
-      // font-size: 1.5rem; changes
-      font-size: 1rem;
+      font-size: 0.85rem;
       color: white;
       @include sm {
         margin: 20px 0 0 0;
-        font-size: 1.2rem;
+        font-size: 0.95rem;
       }
       @include lg {
-        font-size: 1.5rem;
-      }
-    }
-    .itemReleaseDate {
-      // margin: 15px 0 0 0; changes
-      margin: 10px 0 0 0;
-      font-weight: 300;
-      // font-size: 1.2rem;changes
-      font-size: 0.9rem;
-      color: rgb(219, 217, 217);
-      @include sm {
         font-size: 1rem;
       }
+    }
+    .itemCharacterName {
+      margin: 10px 0 0 0;
+      font-weight: 300;
+      font-size: 0.7rem;
+      color: rgb(219, 217, 217);
+      @include sm {
+        font-size: 0.8rem;
+      }
       @include lg {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         margin: 15px 0 0 0;
       }
     }

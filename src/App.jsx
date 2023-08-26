@@ -12,6 +12,7 @@ import {
   SearchResult,
   PageNotFound,
 } from "./utils/imports";
+import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
@@ -38,7 +40,7 @@ function App() {
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
