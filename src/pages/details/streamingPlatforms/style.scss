@@ -1,0 +1,107 @@
+@import "../../../mixin.scss";
+.box {
+  @include flexCenter(column);
+  align-items: start;
+  padding: 0 5px;
+  .trendingHead {
+    .header {
+      color: white;
+      font-weight: 700;
+      @include md {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .countrySelect {
+    margin: 10px 0;
+    select {
+      width: 100px;
+      height: 20px;
+      margin-top: 10px;
+      outline: none;
+      border: 1px solid white;
+      background-color: black;
+      color: white;
+      font-size: 1rem;
+      @include md {
+        font-size: 1.2rem;
+        padding: 2px;
+        width: 200px;
+        height: 30px;
+      }
+    }
+  }
+  .platformContainer {
+    @include flexCenter(row);
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 20px 0 0 0;
+    padding: 0 5px;
+    .platformInfo {
+      @include flexCenter(column);
+      justify-content: start;
+      .serviceIcon {
+        width: 70px;
+        height: 70px;
+        margin: 20px 0;
+        border-radius: 20px;
+        // box-shadow: rgba(64, 64, 65, 0.12) 0px 2px 4px 0px,
+        //   rgba(87, 88, 88, 0.32) 0px 2px 16px 0px;
+        border: 2px solid rgb(67, 65, 65);
+        @include md {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      .serviceName {
+        font-family: "Bricolage Grotesque", sans-serif;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        @include md {
+          font-size: 1.5rem;
+        }
+      }
+
+      .price {
+        font-family: "Bricolage Grotesque", sans-serif;
+        color: rgb(81, 80, 80);
+        font-size: 0.8rem;
+        margin: 5px 0;
+        font-weight: 400;
+        @include md {
+          font-size: 0.95rem;
+        }
+      }
+      Link:visited {
+        text-decoration: none;
+      }
+      .playTrailer {
+        outline: none;
+        border: none;
+        @include flexCenter(row);
+        justify-content: space-between;
+        background-color: rgb(10, 10, 10);
+        border: 1px solid rgb(27, 26, 26);
+        padding: 10px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 10px 0 0;
+        span {
+          font-weight: 500;
+          font-size: 1.1rem;
+          color: white;
+        }
+        cursor: pointer;
+      }
+      .playTrailer:hover {
+        background-color: rgb(21, 20, 20);
+        border: 1px solid rgb(27, 26, 26);
+      }
+    }
+  }
+}

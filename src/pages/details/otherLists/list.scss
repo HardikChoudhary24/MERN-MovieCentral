@@ -1,4 +1,9 @@
-.list{
+@import "../../../mixin.scss";
+
+.list {
+  margin-top: 20px;
+  margin-bottom: 0;
+  @include md {
     margin-top: 120px;
-    margin-bottom: 0;
+  }
 }
