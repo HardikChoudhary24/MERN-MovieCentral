@@ -36,12 +36,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/MERN-MovieCentral/" element={<Home />} />
-        <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={<SearchResult />} />
-        <Route path="/explore/:mediaType" element={<Explore />} />
+        <Route path="/MERN-MovieCentral/:mediaType/:id" element={<Details />} />
+        <Route path="/MERN-MovieCentral/search/:query" element={<SearchResult />} />
+        <Route path="/MERN-MovieCentral/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

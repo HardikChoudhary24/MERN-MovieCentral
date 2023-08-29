@@ -5,12 +5,14 @@ import { IoIosArrowRoundBack, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IconContext } from "react-icons/lib";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getPageNum } from "../../store/slices/searchSlice";
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [inputField, setInputField] = useState("");
   const [searchBarState, setSearchBarState] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const styleForContainer = {
     display: searchBarState ? "flex" : "none",
   };
@@ -20,22 +22,24 @@ const Header = () => {
 
   const searchQuery = (e) => {
     if (e.key === "Enter" && inputField !== "") {
-      navigate(`/search/${inputField}`);
+      setInputField("");
+      dispatch(getPageNum(1))
+      navigate(`/MERN-MovieCentral/search/${inputField}`);
     }
   };
 
   const navigatePageHandler = (type) => {
     if (type === "movie") {
-      navigate(`/explore/${type}`);
+      navigate(`/MERN-MovieCentral/explore/${type}`);
     } else {
-      navigate(`/explore/${type}`);
+      navigate(`/MERN-MovieCentral/explore/${type}`);
     }
   };
 
   return (
     <>
       <header className="headerContainer">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="/MERN-MovieCentral/" style={{ textDecoration: "none" }}>
           <div className="siteLogo">
             <h1>
               <span>MOVIE</span> CENTRAL

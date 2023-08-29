@@ -136,7 +136,11 @@ const Carousel = ({ data, isLoading, isError, componentWidth,mediaType }) => {
                     className="itemContainer"
                     style={itemContainerStyle}
                     key={item.id}
-                    onClick={()=>{navigate(`/${item.media_type || mediaType}/${item.id}`);}}
+                    onClick={()=>{navigate(
+                      `/MERN-MovieCentral/${item.media_type || mediaType}/${
+                        item.id
+                      }`
+                    );}}
                   >
                     <div className="itemPhoto">
                       <Img

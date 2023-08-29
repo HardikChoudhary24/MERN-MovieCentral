@@ -22,12 +22,12 @@ const HeroBanner = () => {
 
   const searchQuery = (e) => {
     if (e.key === "Enter" && inputField !== "") {
-      navigate(`/search/${inputField}`);
+      navigate(`/MERN-MovieCentral/search/${inputField}`);
     }
   };
   const searchQueryViaBtn = () => {
     if ( inputField !== "") {
-      navigate(`/search/${inputField}`);
+      navigate(`/MERN-MovieCentral/search/${inputField}`);
     }
   };
 

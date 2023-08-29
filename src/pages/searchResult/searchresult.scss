@@ -1,0 +1,49 @@
+@import "../../mixin.scss";
+
+.searchResult {
+  width: 100vw;
+  height: 100vw;
+  // @include flexCenter(row);
+  padding-top: 110px;
+  .loaderBox {
+    @include flexCenter(row);
+  }
+  .resultContainer {
+    @include flexCenter(column);
+    justify-content: start;
+    align-items: start;
+    padding-bottom: 70px;
+    margin-bottom:40px;
+    .searchResultHeader {
+      margin: 20px 0 50px;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 600;
+    }
+    .resultItems {
+      @include flexCenter(row);
+      justify-content: center;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 50px;
+      @include sm {
+        justify-content: start;
+        column-gap: 80px;
+      }
+      @include md {
+        justify-content: start;
+        column-gap: 35;
+        row-gap: 35px;
+      }
+      @include lg {
+        justify-content: start;
+        column-gap: 35px;
+        row-gap: 30px;
+      }
+    }
+    .loaderBox {
+      width: 100%;
+      @include flexCenter(row);
+    }
+  }
+}
