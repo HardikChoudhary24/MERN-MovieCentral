@@ -47,7 +47,7 @@ const SearchResult = () => {
     fetchInitialData();
   }, [query]);
 
-  // console.log(data);
+  console.log(data);
   return (
     <div className="searchResult">
       {!loading ? (

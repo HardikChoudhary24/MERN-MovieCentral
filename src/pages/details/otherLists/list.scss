@@ -6,4 +6,11 @@
   @include md {
     margin-top: 120px;
   }
+  .errorMessage{
+    @include flexCenter(row);
+    justify-content: start;
+    width: 100%;
+    padding-left: 5px;
+    margin: 10px 0 0;
+  }
 }

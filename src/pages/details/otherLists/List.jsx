@@ -9,6 +9,7 @@ const List = ({ title, mediaType, id ,listOf}) => {
   const { data, isLoading, isError } = useFetch(`/${mediaType}/${id}/${listOf}`);
   const componentRef = useRef(null);
   const [componentWidth, setComponentWidth] = useState(0);
+  console.log();
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
@@ -31,16 +32,24 @@ const List = ({ title, mediaType, id ,listOf}) => {
     <div className="trendingList list">
       <ContentWrapper>
         <div className="trendingHead" ref={componentRef}>
-          <span style={{fontSize:"1.6rem"}}>{title}</span>
+          <span style={{ fontSize: "1.6rem" }}>{title}</span>
         </div>
       </ContentWrapper>
-      <Carousel
-        data={data?.results}
-        isLoading={isLoading}
-        isError={isError}
-        componentWidth={componentWidth}
-        mediaType={mediaType}
-      />
+      {data?.results?.length === 0 ? (
+        <ContentWrapper>
+          <div className="errorMessage">
+            <p style={{ color: "white" }}> No {title} found !</p>
+          </div>
+        </ContentWrapper>
+      ) : (
+        <Carousel
+          data={data?.results}
+          isLoading={isLoading}
+          isError={isError}
+          componentWidth={componentWidth}
+          mediaType={mediaType}
+        />
+      )}
     </div>
   );
 };

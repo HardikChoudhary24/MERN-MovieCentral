@@ -3,12 +3,13 @@ import Img from "../image/Img";
 import { IconContext } from "react-icons/lib";
 import { BsStarFill } from "react-icons/bs";
 import alternate from "../../assets/no-poster.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.scss"
 import { useNavigate } from "react-router-dom";
-const Card = ({item}) => {
+import { getButtonValue } from "../../store/slices/headerSlice";
+const Card = ({item,mediaType}) => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { url } = useSelector((state) => state?.home);
   const title = item?.original_title || item?.name;
   const wordsArray = title?.split(" ");
@@ -22,6 +23,7 @@ const Card = ({item}) => {
     //   style={itemContainerStyle}
       key={item.id}
       onClick={() => {
+        dispatch(getButtonValue(null));
         navigate(
           `/MERN-MovieCentral/${item.media_type || mediaType}/${item.id}`
         );

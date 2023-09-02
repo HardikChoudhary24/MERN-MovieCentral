@@ -3,15 +3,18 @@ import "./style.scss";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import { BsStarFill } from "react-icons/bs";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Img from "../image/Img";
 import useWindowSize from "../../hooks/useWindowSize";
 import { IconContext } from "react-icons/lib";
 import alternate from "../../assets/no-poster.png";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import { getButtonValue } from "../../store/slices/headerSlice";
 
-const Carousel = ({ data, isLoading, isError, componentWidth,mediaType }) => {
+
+const Carousel = ({ data, isLoading, isError, componentWidth, mediaType }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { url } = useSelector((state) => state.home);
   const [numberOfCards, setNumberOfCards] = useState(4);
@@ -136,11 +139,14 @@ const Carousel = ({ data, isLoading, isError, componentWidth,mediaType }) => {
                     className="itemContainer"
                     style={itemContainerStyle}
                     key={item.id}
-                    onClick={()=>{navigate(
-                      `/MERN-MovieCentral/${item.media_type || mediaType}/${
-                        item.id
-                      }`
-                    );}}
+                    onClick={() => {
+                      dispatch(getButtonValue(null));
+                      navigate(
+                        `/MERN-MovieCentral/${item.media_type || mediaType}/${
+                          item.id
+                        }`
+                      );
+                    }}
                   >
                     <div className="itemPhoto">
                       <Img

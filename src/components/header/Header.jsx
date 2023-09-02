@@ -4,15 +4,19 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowRoundBack, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IconContext } from "react-icons/lib";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { getPageNum } from "../../store/slices/searchSlice";
+import { getButtonValue } from "../../store/slices/headerSlice";
+
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [inputField, setInputField] = useState("");
   const [searchBarState, setSearchBarState] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {buttonClicked} = useSelector(state=>state.header)
+
   const styleForContainer = {
     display: searchBarState ? "flex" : "none",
   };
@@ -23,17 +27,21 @@ const Header = () => {
   const searchQuery = (e) => {
     if (e.key === "Enter" && inputField !== "") {
       setInputField("");
-      dispatch(getPageNum(1))
+      dispatch(getPageNum(1));
       navigate(`/MERN-MovieCentral/search/${inputField}`);
     }
   };
 
   const navigatePageHandler = (type) => {
-    if (type === "movie") {
-      navigate(`/MERN-MovieCentral/explore/${type}`);
-    } else {
-      navigate(`/MERN-MovieCentral/explore/${type}`);
-    }
+    dispatch(getButtonValue(type));
+    dispatch(getPageNum(1));
+    navigate(`/MERN-MovieCentral/explore/${type}`);
+
+    // if (type === "movie") {
+    //   navigate(`/MERN-MovieCentral/explore/${type}`);
+    // } else {
+    //   navigate(`/MERN-MovieCentral/explore/${type}`);
+    // }
   };
 
   return (
@@ -51,10 +59,14 @@ const Header = () => {
             className="moviesBtn"
             onClick={() => navigatePageHandler("movie")}
           >
-            <p>Movies</p>
+            <p style={buttonClicked === "movie" ? { color: "#e01e25" } : {}}>
+              Movies
+            </p>
           </button>
           <button className="tvBtn" onClick={() => navigatePageHandler("tv")}>
-            <p>T.V Shows</p>
+            <p style={buttonClicked === "tv" ? { color: "#e01e25" } : {}}>
+              T.V Shows
+            </p>
           </button>
           {searchBarState && (
             <div className="searchBar" style={styleForContainer}>
