@@ -15,7 +15,7 @@ const Header = () => {
   const [searchBarState, setSearchBarState] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {buttonClicked} = useSelector(state=>state.header)
+  const { buttonClicked } = useSelector((state) => state.header);
 
   const styleForContainer = {
     display: searchBarState ? "flex" : "none",
@@ -28,6 +28,7 @@ const Header = () => {
     if (e.key === "Enter" && inputField !== "") {
       setInputField("");
       dispatch(getPageNum(1));
+      setMenuState(false);
       navigate(`/MERN-MovieCentral/search/${inputField}`);
     }
   };
@@ -35,6 +36,7 @@ const Header = () => {
   const navigatePageHandler = (type) => {
     dispatch(getButtonValue(type));
     dispatch(getPageNum(1));
+    setMenuState(false);
     navigate(`/MERN-MovieCentral/explore/${type}`);
 
     // if (type === "movie") {

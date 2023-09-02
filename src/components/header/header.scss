@@ -116,10 +116,10 @@
   height: 100%;
   @include flexCenter(column);
   justify-content: start;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   background-color: black;
   transition: all 1s ease-in;
   animation: right-to-left 0.3s ease-in forwards;
