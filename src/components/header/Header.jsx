@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./header.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowRoundBack, IoMdClose } from "react-icons/io";
@@ -8,6 +8,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPageNum } from "../../store/slices/searchSlice";
 import { getButtonValue } from "../../store/slices/headerSlice";
+import {gsap} from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const Header = () => {
   const [menuState, setMenuState] = useState(false);
@@ -16,7 +22,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { buttonClicked } = useSelector((state) => state.header);
-
+  const headerRef = useRef();
   const styleForContainer = {
     display: searchBarState ? "flex" : "none",
   };
@@ -38,17 +44,29 @@ const Header = () => {
     dispatch(getPageNum(1));
     setMenuState(false);
     navigate(`/MERN-MovieCentral/explore/${type}`);
-
-    // if (type === "movie") {
-    //   navigate(`/MERN-MovieCentral/explore/${type}`);
-    // } else {
-    //   navigate(`/MERN-MovieCentral/explore/${type}`);
-    // }
   };
+
+  useEffect(() => {
+    const header = headerRef.current;
+
+    // GSAP animation using ScrollTrigger
+    gsap.to(header, {
+      backgroundColor: "rgba(14, 14, 14, 1)",
+      duration: 0.5,
+      scrollTrigger: {
+        trigger: header,
+        scroller: "body",
+        start: "top -30%",
+        end: "top -80%",
+        scrub: 1,
+      },
+    });
+  }, []);
+  
 
   return (
     <>
-      <header className="headerContainer">
+      <header className="headerContainer" ref={headerRef}>
         <Link to="/MERN-MovieCentral/" style={{ textDecoration: "none" }}>
           <div className="siteLogo">
             <h1>
