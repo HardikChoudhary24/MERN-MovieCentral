@@ -13,7 +13,7 @@ Follow these steps to set up Movie Central on your local machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/YourUsername/MovieCentral.git
+   git clone https://github.com/HardikChoudhary24/MERN-MovieCentral.git
    ```
 
 2. **Navigate to the project directory:**
